@@ -1,0 +1,13 @@
+const styles = {
+  button: {
+    width: 45,
+    height: 45,
+    backgroundRepeat: 'no-repeat',
+    backgroundSize: 'contain'
+  }
+}
+export default MathEditorToolbar = () => (
+  <div>
+    <button style={{ ...styles.button, backgroundImage: 'url(math-icon/frac.ico)' }}></button>
+  </div>
+);

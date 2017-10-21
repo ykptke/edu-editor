@@ -1,0 +1,22 @@
+import React from 'react';
+
+export default () => (
+  <div>
+    <span className="ql-formats">
+      <button className="ql-bold">Bold</button>
+      <button className="ql-italic">Italic</button>
+      <button className="ql-underline">Underline</button>
+    </span>
+    <span className="ql-formats">
+      <button className="ql-list" value="ordered">Ordered list</button>
+      <button className="ql-list" value="bullet">Bullet list</button>
+    </span>
+    <span className="ql-formats">
+      <select className="ql-color"></select>
+    </span>
+    <span className="ql-formats">
+      <select className="ql-align"></select>
+      <button className="ql-blockquote">Blockquote</button>
+    </span>
+  </div>
+);

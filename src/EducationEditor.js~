@@ -1,0 +1,64 @@
+import React from 'react';
+
+import Quill from 'quill';
+import 'quill/dist/quill.snow.css';
+
+import Katex from 'katex';
+import 'katex/dist/katex.min.css';
+
+const toolbarOptions = [
+  ['bold', 'italic', 'underline', 'strike'],
+  [{ 'list': 'ordered'}, { 'list': 'bullet' }],
+  [{ 'color': [] }],
+  [{ 'align': [] }],
+  ['blockquote'],
+  ['image', 'formula']
+];
+
+class EducationEditor extends React.Component {
+  constructor() {
+    super();
+    window.katex = Katex;
+  }
+
+  componentDidMount() {
+    this.renderEditor();
+  }
+
+  renderEditor() {
+    let instance = this;
+
+    this.editor = new Quill(this.editorContainer, {
+      modules: {
+	formula: true,
+	toolbar: {
+	  container: toolbarOptions,
+	  handlers: {
+            formula() {
+	      instance.insertEmbed('formula', '\\frac{2}{4}');
+            },
+            image() {
+	      instance.insertEmbed('image', 'http://maymun.gen.tr/images/maymun.jpg');
+            }
+	  }
+	},
+      },
+      theme: 'snow'
+    });
+  }
+
+  insertEmbed(type, value) {
+    const selection = this.editor.getSelection();
+    this.editor.insertEmbed(selection.index, type, value);
+  }
+
+  render() {
+    return (
+      <div>
+	<div ref={el => this.editorContainer = el}></div>
+      </div>
+    )
+  }
+}
+
+export default EducationEditor;
