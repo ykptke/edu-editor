@@ -11,7 +11,7 @@ const styles = {
     display: 'inline-flex',
     flexDirection: 'column',
     padding: 5,
-    background: 'hsl(0, 0%, 80%)',
+    background: '#dcdcdc',
     borderRadius: '0.3rem'
   }
 };
