@@ -1,4 +1,5 @@
 import React from 'react';
+import './MathEditorToolbar.css';
 
 const styles = {
   button: {
@@ -12,5 +13,8 @@ const styles = {
 export default () => (
   <div>
     <button className="btn btn-frac"></button>
+    <button className="btn btn-square-root"></button>
+    <button className="btn btn-x-root"></button>
+    <button className="btn btn-x-power"></button>
   </div>
 );

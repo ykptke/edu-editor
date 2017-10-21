@@ -10,7 +10,7 @@ const styles = {
   body: {
     display: 'inline-flex',
     flexDirection: 'column',
-    padding: '2rem 4rem',
+    padding: 5,
     background: 'hsl(0, 0%, 80%)',
     borderRadius: '0.3rem'
   }
