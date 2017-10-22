@@ -1,39 +1,34 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-
 import 'mathquill/build/mathquill.css';
 import 'mathquill/build/mathquill.js'
-
+import './MathEditor.css';
 import MathEditorToolbar from './MathEditorToolbar';
 
-const styles = {
-  body: {
-    display: 'inline-flex',
-    flexDirection: 'column',
-    padding: 5,
-    background: '#dcdcdc',
-    borderRadius: '0.3rem'
-  }
-};
-
 class MathEditor extends React.Component {
+  constructor() {
+    super();
+    this.writeFormula = this.writeFormula.bind(this);
+  }
   componentDidMount() {
     let MQ = window.MathQuill.getInterface(2);
-
-    this.mathField = MQ.MathField(this.mathFieldSpan, {
-      spaceBehavesLikeTab: true,
-      handlers: {
-	edit: () => {
-	  this.mathField.focus()
-	}
-      }
-    });
+    this.mathField = MQ.MathField(this.mathFieldSpan);
+  }
+  writeFormula(value) {
+    this.mathField.write(value);
+    this.mathField.focus();
+  }
+  handleEditComplate() {
+    const { onEditComplete } = this.props;
+    const value = this.mathField.latex();
+    onEditComplete({ type: 'formula', value });
   }
   render() {
     return (
-      <div style={styles.body}>
-	<MathEditorToolbar />
-	<span ref={el => this.mathFieldSpan = el}></span>
+      <div className="math-panel">
+	<MathEditorToolbar onClickFormula={this.writeFormula} />
+	<div className="math-field" ref={el => this.mathFieldSpan = el} />
+	<button className="btn btn-default" onClick={() => this.handleEditComplate()}>Ekle</button>
       </div>
     )
   }

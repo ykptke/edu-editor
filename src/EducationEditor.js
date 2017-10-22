@@ -1,35 +1,27 @@
 import React from 'react';
-
 import Quill from 'quill';
 import 'quill/dist/quill.snow.css';
-
 import Katex from 'katex';
 import 'katex/dist/katex.min.css';
 
 import MathEditorPopover from './MathEditorPopover';
 
-/* const toolbarOptions = [
- *   ['bold', 'italic', 'underline', 'strike'],
- *   [{ 'list': 'ordered'}, { 'list': 'bullet' }],
- *   [{ 'color': [] }],
- *   [{ 'align': [] }],
- *   ['blockquote'],
- *   ['image', 'formula']
- * ];
- * */
-
 class EducationEditor extends React.Component {
   constructor() {
     super();
     window.katex = Katex;
+
     this.state = {
+      cursorIndex: 0,
       mathEditorIsOpen: false
     };
+
     this.toggleMathEditor = this.toggleMathEditor.bind(this);
+    this.insertEmbed = this.insertEmbed.bind(this);
   }
 
   componentDidMount() {
-    this.renderEditor();
+    this.installEditor();
   }
 
   toggleMathEditor() {
@@ -40,7 +32,16 @@ class EducationEditor extends React.Component {
     })
   }
 
-  renderEditor() {
+  insertEmbed({ type, value }) {
+    const { cursorIndex } = this.state;
+    if (type === 'formula') {
+      // clone math editor popover
+      this.toggleMathEditor();
+    }
+    this.editor.insertEmbed(cursorIndex, type, value);
+  }
+
+  installEditor() {
     let instance = this;
 
     this.editor = new Quill(this.editorContainer, {
@@ -51,21 +52,28 @@ class EducationEditor extends React.Component {
 	  handlers: {
             formula() {
 	      instance.toggleMathEditor();
-	      //instance.insertEmbed('formula', '\\frac{2}{4}');
             },
             image() {
-	      instance.insertEmbed('image', 'http://maymun.gen.tr/images/maymun.jpg');
+	      instance.insertEmbed({
+		type: 'image',
+		value: 'http://maymun.gen.tr/images/maymun.jpg'
+	      });
             }
 	  }
 	},
       },
       theme: 'snow'
     });
-  }
 
-  insertEmbed(type, value) {
-    const selection = this.editor.getSelection();
-    this.editor.insertEmbed(selection.index, type, value);
+    this.editor.on('editor-change', () => {
+      const range = this.editor.getSelection();
+
+      if (range) {
+	this.setState({
+	  cursorIndex: range.index
+	});
+      }
+    });
   }
 
   render() {
@@ -74,12 +82,36 @@ class EducationEditor extends React.Component {
     return (
       <div>
 	<div ref={el => this.editorToolbar = el}>
-	  <MathEditorPopover isOpen={mathEditorIsOpen} onOuterAction={this.toggleMathEditor} onEditComplete={this.insertEmbed}>
-	    <button className="ql-formula">Formula</button>
-	  </MathEditorPopover>
-
+	  <select className="ql-size" defaultValue="">
+	    <option value="small">Küçük</option>
+	    <option value="">Normal</option>
+	    <option value="large">Büyük</option>
+	  </select>
+	  <span className="ql-formats">
+	    <button className="ql-bold"/>
+	    <button className="ql-italic"/>
+	    <button className="ql-underline"/>
+	    <button className="ql-strike"/>
+	  </span>
+	  <span className="ql-formats">
+	    <button className="ql-list" value="ordered"/>
+	    <button className="ql-list" value="bullet"/>
+	  </span>
+	  <span className="ql-formats">
+	    <select className="ql-color"></select>
+	    <select className="ql-align"></select>
+	  </span>
+	  <span className="ql-formats">
+	    <button className="ql-blockquote"/>
+	  </span>
+	  <span className="ql-formats">
+	    <MathEditorPopover isOpen={mathEditorIsOpen} onOuterAction={this.toggleMathEditor} onEditComplete={this.insertEmbed}>
+	      <button className="ql-formula">Formula</button>
+	    </MathEditorPopover>
+	    <button className="ql-image"/>
+	  </span>
 	</div>
-	<div ref={el => this.editorContainer = el}></div>
+	<div ref={el => this.editorContainer = el}>Birşeyler yaz...</div>
       </div>
     )
   }

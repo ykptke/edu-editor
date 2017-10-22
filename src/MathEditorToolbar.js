@@ -1,20 +1,18 @@
 import React from 'react';
-import './MathEditorToolbar.css';
 
-const styles = {
-  button: {
-    width: 45,
-    height: 45,
-    backgroundRepeat: 'no-repeat',
-    backgroundSize: 'contain'
-  }
-};
+const buttons = [
+  { name: 'frac', latex: '\\frac{}{}' },
+  { name: 'square-root', latex: '\\sqrt{}' },
+  { name: 'x-root', latex: '\\sqrt[{}]{}' },
+  { name: 'x-power', latex: '\\^{}' },
+];
 
-export default () => (
+export default ({ onClickFormula = (e) => console.log(e) }) => (
   <div>
-    <button className="btn btn-frac"></button>
-    <button className="btn btn-square-root"></button>
-    <button className="btn btn-x-root"></button>
-    <button className="btn btn-x-power"></button>
+    {
+      buttons.map(el => (
+	<button key={el.name} className={`math-btn ${el.name}`} onClick={() => onClickFormula(el.latex)} />
+      ))
+    }
   </div>
 );

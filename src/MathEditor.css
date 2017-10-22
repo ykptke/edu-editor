@@ -1,0 +1,73 @@
+.btn {
+    display: inline-block;
+    padding: 6px 12px;
+    margin-bottom: 0;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.42857143;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    -ms-touch-action: manipulation;
+    touch-action: manipulation;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    background-image: none;
+    border: 1px solid transparent;
+    border-top-color: transparent;
+    border-right-color: transparent;
+    border-bottom-color: transparent;
+    border-left-color: transparent;
+    border-radius: 4px;
+}
+.btn.btn-default {
+    color: #333;
+    background-color: #fff;
+    border-color: #ccc;
+}
+
+.math-panel {
+    display: inline-flex;
+    flex-direction: column;
+    padding: 5px;
+    background: #fff;
+    border: 1px solid #757575;
+    border-radius: 5px;
+}
+
+.math-field {
+    margin: 5px 0px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.math-btn {
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-color: white;
+}
+
+.math-btn.frac {
+    background-image: url("~/math-icons/math-function-mathematical-fraction-48.png");
+}
+
+.math-btn.square-root {
+    background-image: url("~/math-icons/math-square-root-function-48.png");
+}
+
+.math-btn.x-root {
+    background-image: url("~/math-icons/math-function-root-x-power-n-48.png");
+}
+
+.math-btn.x-power {
+    background-image: url("~/math-icons/math-function-mathematical-x-power-n-48.png");
+}
