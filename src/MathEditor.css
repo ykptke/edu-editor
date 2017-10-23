@@ -49,25 +49,99 @@
     width: 40px;
     height: 40px;
     cursor: pointer;
-    border: 1px solid transparent;
+    margin: 0px 1px;
+    border: 1px solid #ccc;
     border-radius: 4px;
     background-repeat: no-repeat;
     background-size: contain;
     background-color: white;
 }
 
-.math-btn.frac {
-    background-image: url("~/math-icons/math-function-mathematical-fraction-48.png");
+.frac {
+    background-image: url("~/math-icons/frac.png");
+}
+.square-root {
+    background-image: url("~/math-icons/square-root.png");
+}
+.x-power-square-root {
+    background-image: url("~/math-icons/x-power-square-root.png");
+}
+.x-power {
+    background-image: url("~/math-icons/x-power.png");
+}
+.x-sub-power {
+    background-image: url("~/math-icons/x-sub-power.png");
+}
+.sum {
+    background-image: url("~/math-icons/sum.png");
+}
+.prod {
+    background-image: url("~/math-icons/prod.png");
+}
+.int {
+    background-image: url("~/math-icons/int.png");
+}
+.oint {
+    background-image: url("~/math-icons/oint.png");
+}
+.bigwedge {
+    background-image: url("~/math-icons/bigwedge.png");
+}
+.bigvee {
+    background-image: url("~/math-icons/bigvee.png");
+}
+.circ {
+    background-image: url("~/math-icons/circ.png");
+}
+.overleftarrow {
+    background-image: url("~/math-icons/overleftarrow.png");
+}
+.overrightarrow {
+    background-image: url("~/math-icons/overrightarrow.png");
 }
 
-.math-btn.square-root {
-    background-image: url("~/math-icons/math-square-root-function-48.png");
+.alpha {
+    background-image: url("~/math-icons/alpha.png");
 }
-
-.math-btn.x-root {
-    background-image: url("~/math-icons/math-function-root-x-power-n-48.png");
+.beta {
+    background-image: url("~/math-icons/beta.png");
 }
-
-.math-btn.x-power {
-    background-image: url("~/math-icons/math-function-mathematical-x-power-n-48.png");
+.gamma {
+    background-image: url("~/math-icons/gamma.png");
+}
+.delta {
+    background-image: url("~/math-icons/delta.png");
+}
+.mu {
+    background-image: url("~/math-icons/mu.png");
+}
+.pi {
+    background-image: url("~/math-icons/pi.png");
+}
+.omega {
+    background-image: url("~/math-icons/omega.png");
+}
+.subset {
+    background-image: url("~/math-icons/subset.png");
+}
+.supset {
+    background-image: url("~/math-icons/supset.png");
+}
+.to {
+    background-image: url("~/math-icons/to.png");
+}
+.gets {
+    background-image: url("~/math-icons/gets.png");
+}
+.in {
+    background-image: url("~/math-icons/in.png");
+}
+.notin {
+    background-image: url("~/math-icons/notin.png");
+}
+.ni {
+    background-image: url("~/math-icons/ni.png");
+}
+.infty {
+    background-image: url("~/math-icons/infty.png");
 }
